@@ -3,28 +3,34 @@ import searchApi from "../api/searchApi";
 import { SearchType } from "../models/SearchType.enum";
 // import { shallow } from 'enzyme';
 
-const resposeObj = {
-  incomplete_results: false,
-  items: [],
-  total_count: 1,
-}
-
-global.fetch = jest.fn(() =>
-  Promise.resolve({
-    json: () =>
-      Promise.resolve(resposeObj),
-  })
-);
+// global.fetch = jest.fn(() =>
+//   Promise.resolve({
+//     json: () =>
+//       Promise.resolve(resposeObj),
+//   })
+// );
 
 describe("Git Hub Lite Test", () => {
   it("Should return users after API call", async () => {
     const responseData = await searchApi.search({
       page: 1,
-      searchText: "Typescript",
+      searchText: "John",
       searchType: SearchType.Users,
     });
 
-    expect(responseData).toMatchObject(resposeObj);
+    expect(Array.isArray(responseData.items)).toBe(true);
+    expect(responseData.items.length).toBeGreaterThan(0);
+  });
+
+  it("Should return repositories after API call", async () => {
+    const responseData = await searchApi.search({
+      page: 1,
+      searchText: "Typescript",
+      searchType: SearchType.Repository,
+    });
+
+    expect(Array.isArray(responseData.items)).toBe(true);
+    expect(responseData.items.length).toBeGreaterThan(0);
   });
 
 

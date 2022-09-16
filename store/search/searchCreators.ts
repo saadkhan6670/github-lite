@@ -15,9 +15,19 @@ export const searchGithub =
         dispatch(searchSlice.actions.setSearchedData(response));
       }
     } else if (response.message) {
-      dispatch(searchSlice.actions.setErrorMessage(response.message));
+      dispatch(
+        searchSlice.actions.setErrorMessage({
+          errorMessage: response.message,
+          showToast: true,
+        })
+      );
     } else {
-      dispatch(searchSlice.actions.setErrorMessage("Something went wrong"));
+      dispatch(
+        searchSlice.actions.setErrorMessage({
+          errorMessage: "Something went wrong",
+          showToast: true,
+        })
+      );
     }
 
     dispatch(searchSlice.actions.setLoading(false));

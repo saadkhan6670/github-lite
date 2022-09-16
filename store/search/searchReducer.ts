@@ -9,12 +9,18 @@ export interface SearchState {
   searchResults: DataInterface;
   loading: boolean;
   errorMessage: string;
+  showToast: boolean;
 }
 
 // Type for our state
 export interface SearchMeta {
   searchText: string;
   searchType: string;
+}
+
+export interface ISnackBar {
+  errorMessage: string;
+  showToast: boolean;
 }
 
 // Initial state
@@ -28,6 +34,7 @@ const initialState: SearchState = {
   },
   loading: false,
   errorMessage: "",
+  showToast: false,
 };
 
 // Actual Slice
@@ -64,10 +71,10 @@ export const searchSlice = createSlice({
       state.loading = action.payload;
     },
 
-    setErrorMessage(state, action: PayloadAction<string>) {
-      state.errorMessage = action.payload;
+    setErrorMessage(state, action: PayloadAction<ISnackBar>) {
+      state.errorMessage = action.payload.errorMessage;
+      state.showToast = action.payload.showToast;
     },
-
   },
 });
 

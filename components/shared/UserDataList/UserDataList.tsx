@@ -37,7 +37,7 @@ const UserDataList = ({ data }: userDataProps) => {
     <InfiniteScroll
       dataLength={data.items.length}
       next={fetchMoreData}
-      hasMore
+      hasMore={data.items.length !== data.total_count}
       loader={<h3> Loading...</h3>}
       endMessage={<h4>Nothing more to show</h4>}
     >

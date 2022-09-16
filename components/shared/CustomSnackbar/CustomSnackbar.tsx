@@ -1,19 +1,20 @@
 import * as React from "react";
-import { Typography, Snackbar, Alert } from "@mui/material";
+import { Snackbar, Alert } from "@mui/material";
 
-interface userDataProps {
+interface SnackBarProps {
   errorMessage: string;
   onClose: () => void;
+  showToast: boolean;
 }
 
-const CustomSnackbar = ({ errorMessage, onClose }: userDataProps) => {
+const CustomSnackbar = ({
+  errorMessage,
+  onClose,
+  showToast,
+}: SnackBarProps) => {
   return (
-    <Snackbar
-      open={errorMessage !== "" ? true : false}
-      autoHideDuration={6000}
-      onClose={onClose}
-    >
-      <Alert severity="error" sx={{ width: "100%" }}>
+    <Snackbar open={showToast} autoHideDuration={4000} onClose={onClose}>
+      <Alert onClose={onClose} severity="error" sx={{ width: "100%" }}>
         {errorMessage}
       </Alert>
     </Snackbar>
