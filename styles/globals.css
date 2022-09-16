@@ -20,7 +20,13 @@ a {
     color-scheme: dark;
   }
   body {
-    color: white;
-    background: black;
+    /* color: white; */
+    background: "#0d1116";
   }
+}
+
+.typeBadge {
+  background: "#388bfd26";
+  border-color: "transparent";
+  color: "#58a6ff";
 }

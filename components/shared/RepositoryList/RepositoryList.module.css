@@ -1,0 +1,15 @@
+.typeBadge {
+    background: "#388bfd26";
+    border-color: "transparent";
+    color: "#58a6ff";
+  }
+  
+  .MuiChip-root {
+    background: "#388bfd26";
+    border-color: "transparent";
+    color: "#58a6ff";
+  }
+  
+  /* .MuiSlider-root:hover {
+    color: #2e8b57;
+  } */
