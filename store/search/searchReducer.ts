@@ -26,7 +26,7 @@ const initialState: SearchState = {
     total_count: 0,
   },
   loading: false,
-  errorMessage : "",
+  errorMessage: "",
 };
 
 // Actual Slice
@@ -35,9 +35,8 @@ export const searchSlice = createSlice({
   initialState,
   reducers: {
     // Action to set the search text
-    setSearchMeta(state, action: PayloadAction<SearchMeta>) {
+    setSearchText(state, action: PayloadAction<SearchMeta>) {
       state.searchText = action.payload.searchText;
-      state.searchType = action.payload.searchType;
     },
 
     setSearchType(state, action: PayloadAction<SearchMeta>) {
@@ -46,6 +45,18 @@ export const searchSlice = createSlice({
 
     setSearchedData(state, action: PayloadAction<DataInterface>) {
       state.searchResults = action.payload;
+    },
+
+    setMoreData(state, action: PayloadAction<DataInterface>) {
+      state.searchResults.incomplete_results =
+        action.payload.incomplete_results;
+
+      state.searchResults.total_count = action.payload.total_count;
+
+      state.searchResults.items = [
+        ...state.searchResults.items,
+        ...action.payload.items,
+      ];
     },
 
     setLoading(state, action: PayloadAction<boolean>) {

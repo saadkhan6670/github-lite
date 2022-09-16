@@ -5,18 +5,15 @@ import ISearchRequest from "../../models/requests/ISearchRequest.interface";
 
 export const searchGithub =
   (body: ISearchRequest) => async (dispatch: AppDispatch) => {
-    dispatch(searchSlice.actions.setLoading(true));
-    dispatch(
-      searchSlice.actions.setSearchedData({
-        incomplete_results: true,
-        items: [],
-        total_count: 0,
-      })
-    );
+    console.log("body", body);
     const response = await searchApi.search({ ...body });
 
     if (response.items !== undefined) {
-      dispatch(searchSlice.actions.setSearchedData(response));
+      if (body.page > 1) {
+        dispatch(searchSlice.actions.setMoreData(response));
+      } else {
+        dispatch(searchSlice.actions.setSearchedData(response));
+      }
     } else if (response.message) {
       dispatch(searchSlice.actions.setErrorMessage(response.message));
     } else {
@@ -26,15 +23,24 @@ export const searchGithub =
     dispatch(searchSlice.actions.setLoading(false));
   };
 
-export const setSearchMeta =
+export const setSearchText =
   (body: ISearchRequest) => async (dispatch: AppDispatch) => {
-    dispatch(searchSlice.actions.setSearchMeta(body));
+    dispatch(searchSlice.actions.setSearchText(body));
+    dispatch(searchSlice.actions.setLoading(true));
   };
 
 export const setSearchType =
   (body: ISearchRequest) => async (dispatch: AppDispatch) => {
     dispatch(searchSlice.actions.setSearchType(body));
     if (body.searchText !== "") {
+      dispatch(searchSlice.actions.setLoading(true));
+      dispatch(
+        searchSlice.actions.setSearchedData({
+          incomplete_results: true,
+          items: [],
+          total_count: 0,
+        })
+      );
       dispatch(searchGithub(body));
     }
   };

@@ -18,6 +18,7 @@ const Header = () => {
     const data: ISearchRequest = {
       searchText,
       searchType: value,
+      page: 1,
     };
     dispatch(setSearchType(data));
   };

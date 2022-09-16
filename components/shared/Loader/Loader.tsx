@@ -12,8 +12,8 @@ import { Skeleton } from "@mui/material";
 const UserDataList = () => {
   return (
     <List sx={{ width: "100%" }}>
-      {new Array(10).fill(1).map((value) => (
-        <Box key={value}>
+      {new Array(10).fill(1).map(() => (
+        <Box>
           <ListItemButton alignItems="center" sx={{ padding: "20px" }}>
             <ListItemAvatar>
               <Skeleton sx={{ bgcolor: "grey.800" }} variant="circular">

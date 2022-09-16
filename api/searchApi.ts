@@ -4,15 +4,26 @@ import DataInterface from "../models/DataInterface.interface";
 export default {
   search(body: ISearchRequest) {
     return fetch(
-      `https://api.github.com/search/${body.searchType}?q=${body.searchText}`
+      `https://api.github.com/search/${body.searchType}?q=${body.searchText}&page=${body.page}`
     )
       .then((res) => res.json())
       .then((response: DataInterface) => {
-        console.log("in success" , response);
         return response;
       })
       .catch((error) => {
-        console.log("in error",error);
+        return error;
+      });
+  },
+
+  moreDataSearch(body: ISearchRequest) {
+    return fetch(
+      `https://api.github.com/search/${body.searchType}?q=${body.searchText}&page=${body.page}`
+    )
+      .then((res) => res.json())
+      .then((response: DataInterface) => {
+        return response;
+      })
+      .catch((error) => {
         return error;
       });
   },

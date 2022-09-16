@@ -1,18 +1,14 @@
 import type { NextPage } from "next";
 import Box from "@mui/material/Box";
-import { Typography, Snackbar, Alert } from "@mui/material";
+import { Typography } from "@mui/material";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import BaseShare from "../components/shared/BaseShare";
-import { useAppSelector, useAppDispatch } from "../store/redux";
+import { useAppSelector } from "../store/redux";
 import { searchSlice } from "../store/search/searchReducer";
 
 const Home: NextPage = () => {
-  const dispatch = useAppDispatch();
-
   const { searchType, errorMessage, loading, searchResults, searchText } =
     useAppSelector((state) => state.search);
-
-  console.log("searchResults", searchResults);
 
   const renderView = () => {
     if (searchText === "" || errorMessage !== "") {

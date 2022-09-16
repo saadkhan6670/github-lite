@@ -1,15 +1,14 @@
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
-import * as React from "react";
+import React, { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../../store/redux";
 import {
   searchGithub,
-  setSearchMeta,
+  setSearchText,
 } from "../../../store/search/searchCreators";
 import ISearchRequest from "../../../models/requests/ISearchRequest.interface";
 import { debounce } from "../../utils/Helpers";
-import { useEffect } from "react";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -55,18 +54,18 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const delayCall = debounce((callback: Function) => {
   callback();
-}, 1);
+}, 1000);
 
 const SearchInput = () => {
   const dispatch = useAppDispatch();
 
-  const searchType = useAppSelector((state) => state.search.searchType);
-  const searchText = useAppSelector((state) => state.search.searchText);
+  const { searchType, searchText } = useAppSelector((state) => state.search);
 
   const fetchData = async () => {
     const data: ISearchRequest = {
       searchText,
       searchType,
+      page: 1,
     };
     dispatch(searchGithub(data));
   };
@@ -81,8 +80,9 @@ const SearchInput = () => {
     const data: ISearchRequest = {
       searchText: value,
       searchType,
+      page: 1,
     };
-    dispatch(setSearchMeta(data));
+    dispatch(setSearchText(data));
   };
   return (
     <Search>
