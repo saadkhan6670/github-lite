@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import DataInterface from "../../models/DataInterface.interface";
+import { SearchType } from "../../models/SearchType.enum";
 
 // Type for our state
 export interface SearchState {
@@ -19,7 +20,7 @@ export interface SearchMeta {
 // Initial state
 const initialState: SearchState = {
   searchText: "",
-  searchType: "users",
+  searchType: SearchType.Users,
   searchResults: {
     incomplete_results: false,
     items: [],

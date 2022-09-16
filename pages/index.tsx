@@ -5,6 +5,7 @@ import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import BaseShare from "../components/shared/BaseShare";
 import { useAppSelector } from "../store/redux";
 import { searchSlice } from "../store/search/searchReducer";
+import { SearchType } from "../models/SearchType.enum";
 
 const Home: NextPage = () => {
   const { searchType, errorMessage, loading, searchResults, searchText } =
@@ -34,10 +35,10 @@ const Home: NextPage = () => {
         </Box>
       );
     }
-    if (searchType === "users") {
+    if (searchType === SearchType.Users) {
       return <BaseShare.UserDataList data={searchResults} />;
     }
-    if (searchType === "repositories") {
+    if (searchType === SearchType.Repository) {
       return <BaseShare.RepositoryList data={searchResults} />;
     }
   };

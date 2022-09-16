@@ -1,5 +1,5 @@
 export const debounce = (func: Function, delay: number) => {
-  let timeoutId;
+  let timeoutId: ReturnType<typeof setTimeout>;
 
   return (...args) => {
     if (timeoutId) {

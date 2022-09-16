@@ -7,6 +7,7 @@ import BaseShare from "../../../shared/BaseShare";
 import { useAppDispatch, useAppSelector } from "../../../../store/redux";
 import { setSearchType } from "../../../../store/search/searchCreators";
 import ISearchRequest from "../../../../models/requests/ISearchRequest.interface";
+import { SearchType } from "../../../../models/SearchType.enum";
 
 const Header = () => {
   const dispatch = useAppDispatch();
@@ -27,12 +28,12 @@ const Header = () => {
     <AppBar position="static" style={{ background: "#161b22" }}>
       <Toolbar>
         <Typography variant="h6" noWrap component="div">
-          GITHUB lite
+          GitHub lite
         </Typography>
         <BaseShare.SearchInput />
         <Button
-          onClick={() => onChangeType("users")}
-          variant={searchType === "users" ? "contained" : "outlined"}
+          onClick={() => onChangeType(SearchType.Users)}
+          variant={searchType === SearchType.Users ? "contained" : "outlined"}
           sx={{ marginLeft: "20px", marginRight: "20px" }}
         >
           Users
@@ -41,8 +42,10 @@ const Header = () => {
           OR
         </Typography>
         <Button
-          onClick={() => onChangeType("repositories")}
-          variant={searchType === "repositories" ? "contained" : "outlined"}
+          onClick={() => onChangeType(SearchType.Repository)}
+          variant={
+            searchType === SearchType.Repository ? "contained" : "outlined"
+          }
           sx={{ marginLeft: "20px", marginRight: "20px" }}
         >
           Repositories
