@@ -8,6 +8,7 @@ import { useAppDispatch, useAppSelector } from "../../../../store/redux";
 import { setSearchType } from "../../../../store/search/searchCreators";
 import ISearchRequest from "../../../../models/requests/ISearchRequest.interface";
 import { SearchType } from "../../../../models/SearchType.enum";
+import { Colors } from "../../../utils/styles/presets";
 
 const Header = () => {
   const dispatch = useAppDispatch();
@@ -24,7 +25,7 @@ const Header = () => {
   };
 
   return (
-    <AppBar position="static" style={{ background: "#161b22" }}>
+    <AppBar position="static" style={{ background: Colors.bLuishBlack }}>
       <Toolbar>
         <Typography variant="h6" noWrap component="div">
           GitHub lite

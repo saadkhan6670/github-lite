@@ -21,12 +21,6 @@ a {
   }
   body {
     /* color: white; */
-    background: "#0d1116";
+    /* background: "#0d1116"; */
   }
-}
-
-.typeBadge {
-  background: "#388bfd26";
-  border-color: "transparent";
-  color: "#58a6ff";
 }

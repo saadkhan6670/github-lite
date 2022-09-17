@@ -8,11 +8,10 @@ import {
   Stack,
   Chip,
   Typography,
+  ListItemAvatar,
+  ListItemButton,
+  Avatar,
 } from "@mui/material";
-import Divider from "@mui/material/Divider";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemAvatar from "@mui/material/ListItemAvatar";
-import Avatar from "@mui/material/Avatar";
 import InfiniteScroll from "react-infinite-scroll-component";
 import RepositoryIcon from "@mui/icons-material/BookOutlined";
 import ForkRightIcon from "@mui/icons-material/ForkRight";
@@ -23,6 +22,7 @@ import { searchGithub } from "../../../store/search/searchCreators";
 import ISearchRequest from "../../../models/requests/ISearchRequest.interface";
 import Loader from "../Loader/Loader";
 import { SearchType } from "../../../models/SearchType.enum";
+import { Colors } from "../../utils/styles/presets";
 
 interface DataProps {
   data: DataInterface;
@@ -59,7 +59,7 @@ const DataList = ({ data }: DataProps) => {
                 <>
                   <ListItemIcon>
                     <RepositoryIcon
-                      sx={{ color: "#c9d1d9" }}
+                      sx={{ color: Colors.lightGray }}
                       fontSize="large"
                     />
                   </ListItemIcon>
@@ -84,13 +84,16 @@ const DataList = ({ data }: DataProps) => {
                           </Link>
 
                           <Chip
-                            sx={{ color: "#d29922", borderColor: "#9e6a03" }}
+                            sx={{
+                              color: Colors.goldenYellow,
+                              borderColor: Colors.goldenYellowDark,
+                            }}
                             label={value.private ? "Private" : "Public"}
                             variant="outlined"
                           />
                         </Stack>
                         <Typography
-                          color="#c9d1d9"
+                          color={Colors.lightGray}
                           variant="h6"
                           paddingRight="10px"
                         >
@@ -109,9 +112,9 @@ const DataList = ({ data }: DataProps) => {
                         {value.language && (
                           <Chip
                             sx={{
-                              background: "#388bfd26",
+                              background: Colors.opaqueBlue,
                               borderColor: "transparent",
-                              color: "#58a6ff",
+                              color: Colors.blue,
                             }}
                             key={value.language}
                             label={value.language}
@@ -119,9 +122,9 @@ const DataList = ({ data }: DataProps) => {
                           />
                         )}
                         <Box display="flex">
-                          <ForkRightIcon sx={{ color: "#c9d1d9" }} />
+                          <ForkRightIcon sx={{ color: Colors.lightGray }} />
                           <Typography
-                            color="#c9d1d9"
+                            color={Colors.lightGray}
                             variant="body1"
                             paddingRight="10px"
                           >
@@ -158,11 +161,6 @@ const DataList = ({ data }: DataProps) => {
                 </>
               )}
             </ListItemButton>
-            <Divider
-              sx={{ bgcolor: "#30363d" }}
-              variant="middle"
-              component="li"
-            />
           </Box>
         ))}
       </List>
