@@ -10,7 +10,7 @@ export default {
       );
       return response.data as DataInterface;
     } catch (error) {
-      return error;
+      return error.response.data;
     }
   },
 };

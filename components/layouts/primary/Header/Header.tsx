@@ -12,8 +12,7 @@ import { SearchType } from "../../../../models/SearchType.enum";
 const Header = () => {
   const dispatch = useAppDispatch();
 
-  const searchType = useAppSelector((state) => state.search.searchType);
-  const searchText = useAppSelector((state) => state.search.searchText);
+  const { searchType, searchText } = useAppSelector((state) => state.search);
 
   const onChangeType = async (value: string) => {
     const data: ISearchRequest = {

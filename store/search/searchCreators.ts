@@ -5,9 +5,7 @@ import ISearchRequest from "../../models/requests/ISearchRequest.interface";
 
 export const searchGithub =
   (body: ISearchRequest) => async (dispatch: AppDispatch) => {
-    console.log("body", body);
     const response = await searchApi.search({ ...body });
-
     if (response.items !== undefined) {
       if (body.page > 1) {
         dispatch(searchSlice.actions.setMoreData(response));
