@@ -1,14 +1,8 @@
-This is Github searching Application built on [Next.js](https://nextjs.org/) bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is Github user and respository searching Application built on [Next.js](https://nextjs.org/) bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 
-First, create a .env.local file at the project root and paste the following:
-
-```bash
-NEXT_PUBLIC_GITHUB_KEY='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'
-```
-
-this is for the security purpose to not share sensitive credentials with anyone
+First, copy the .env.local which I send in the email, this is for the security purpose to not share sensitive credentials with anyone,
 
 Second, run the development server:
 
@@ -20,24 +14,38 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-
 To run test:
 
 ```bash
 npm run test
 ```
 
-## Learn More
+## Overview of the project
 
-To learn more about Next.js, take a look at the following resources:
+This is a simple github application which uses the github search api to query and get data related to user and repository.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+For infinite scroll pagination I used a library which handles the infinite scroll and stops where we want it to stop.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+As for the tests I mocked the search api in certain conditions.
 
-## Deploy on Vercel
+The UI is very simple. It has a single view where things are changing on the basis of condition as to show loading, or no data and data states,
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+As for the state management I used reduxToolit for saving the type of search, search text, and also data which is coming from api and error messages. Why did I do this? Is because ro avoid props drilling and we can get any type of data in any module as my project is in a modular approach so we have a component for almost everything so to perform some tasks and to display some data on the basis of different conditions we can get the data easily via redux store. 
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Variables in store 
+
+searchText: this is the variable which has the text to search for in the api,
+  searchType: this type is used in all of the application to perform specific tasks related to users or repositories example while hitting the api and showing the DataList component a different view.
+  searchResults: {
+    incomplete_results: false,
+    items: [],
+    total_count: 0,
+  }, : This has the data coming for the api.
+  loading: this handles the loading state of the app.
+  errorMessage: if there is any sort of error we can use this to set the error and the snackbar component will display the error.
+  showToast: to show the toast message.
+
+I did my best to use all the aspects of nextJs . Also I make sure that all the components and api hits and action dispatches are typed properly.
+
+While making this I did manual testing on metrics, Data is coming properly on every scenario and that the type is going properly. Pagination is working as expected and errors are handled. Modules are properly consolidated. 
+
