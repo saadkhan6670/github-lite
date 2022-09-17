@@ -51,5 +51,5 @@ Variables in store
 
 I did my best to use all the aspects of nextJs . Also I make sure that all the components and api hits and action dispatches are typed properly.
 
-While making this I did manual testing on metrics, Data is coming properly on every scenario and that the type is going properly. Pagination is working as expected and errors are handled. Modules are properly consolidated. 
+While making this I did manual testing on following metrics, Data is coming properly on every scenario and that the type is going properly. Pagination is working as expected and errors are handled. Modules are properly consolidated. 
 
