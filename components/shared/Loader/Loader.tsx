@@ -4,7 +4,7 @@ import * as React from "react";
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
 import ListItemText from "@mui/material/ListItemText";
-import ListItemButton from "@mui/material/ListItemButton";
+import ListItem from "@mui/material/ListItem";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import { Skeleton } from "@mui/material";
@@ -14,7 +14,7 @@ const UserDataList = () => {
     <List sx={{ width: "100%" }}>
       {new Array(10).fill(1).map(() => (
         <Box>
-          <ListItemButton alignItems="center" sx={{ padding: "20px" }}>
+          <ListItem alignItems="center" sx={{ padding: "20px" }}>
             <ListItemAvatar>
               <Skeleton sx={{ bgcolor: "grey.800" }} variant="circular">
                 <Avatar />
@@ -28,7 +28,7 @@ const UserDataList = () => {
                 </Skeleton>
               }
             />
-          </ListItemButton>
+          </ListItem>
           <Divider variant="inset" component="li" />
         </Box>
       ))}

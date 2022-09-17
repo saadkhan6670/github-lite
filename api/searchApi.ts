@@ -10,7 +10,13 @@ export default {
       );
       return response.data as DataInterface;
     } catch (error) {
-      return error.response.data;
+      if (error.code === "ECONNABORTED") {
+        return { message: "Connection timed out" };
+      }
+      if (error.response?.data) {
+        return error.response.data;
+      }
+      return false;
     }
   },
 };

@@ -2,9 +2,7 @@ This is Github user and respository searching Application built on [Next.js](htt
 
 ## Getting Started
 
-First, copy the .env.local which I send in the email, this is for the security purpose to not share sensitive credentials with anyone,
-
-Second, run the development server:
+First, run the development server:
 
 ```bash
 npm run dev

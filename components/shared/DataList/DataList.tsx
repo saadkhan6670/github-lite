@@ -49,7 +49,6 @@ const DataList = ({ data }: DataProps) => {
       dataLength={data.items.length}
       next={fetchMoreData}
       hasMore={data.items.length !== data.total_count}
-      loader={<Loader />}
     >
       <List sx={{ width: "100%", padding: "20px" }}>
         {data.items.map((value: IDataItem) => (
